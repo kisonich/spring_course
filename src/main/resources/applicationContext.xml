@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:MyApp.properties"/>
+
+<!--\\\\\\\\\\\\\\\IoC\\\\\\\\\\\\\-->
+    <!--      id передаем в контейнер/ClassPathXmlApplicationContext-->
+        <bean id = "myPet"
+            class = "spring_IoC_DI.Cat">
+        </bean>
+    <bean id = "myPerson"
+          class="spring_IoC_DI.Person">
+        <!--     Внедрение зависимость с помощью сеттера // добавили сет setPet и ссылку на бин myPet-->
+            <property name="pet" ref="myPet"> </property>   <!--///// DI  ////////-->
+
+            <property name="name" value="${person.name}"> </property>
+            <property name="age" value="25" > </property>
+    </bean>
+    <!--\\\\\\\\\\\\\\\IoC\\\\\\\\\\\\\-->
+
+
+</beans>
+
+<!--Конфигурационный файл в котором спринг будет создавать наши бины-->
