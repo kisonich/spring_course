@@ -2,9 +2,7 @@ package hibernate_many_to_many.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "children")
@@ -18,16 +16,14 @@ public class Child {
     @Column(name = "age")
     private int age;
 
-//    ////// Прописываем связь /////////////////////////
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "child_section",joinColumns = @JoinColumn(name = "child_id")//joinColumns прописываем с помощью какого столбца таблица child_section с таблицей child
-//    ,inverseJoinColumns = @JoinColumn(name = "section_id") ) // с помощью какого столбца child_section таблица будет связана с таблицей section
-//    private List<Section> sections = new ArrayList<>();
-//    ////// Прописываем связь /////////////////////////
+    ////// Прописываем связь /////////////////////////
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "child_section",joinColumns = @JoinColumn(name = "child_id")//joinColumns прописываем с помощью какого столбца таблица child_section с таблицей child
+    ,inverseJoinColumns = @JoinColumn(name = "section_id") ) // с помощью какого столбца child_section таблица будет связана с таблицей section
+    private List<Section> sections = new ArrayList<>();
+    ////// Прописываем связь /////////////////////////
 
 
-    @ManyToMany
-    Set<Section> sections;
 
 
 
@@ -41,7 +37,7 @@ public class Child {
     }
     public void addSectionToChild(Section section){
         if (sections == null){
-            sections = new HashSet<Section>();
+            sections = new ArrayList<>();
         }
         sections.add(section);
     }
@@ -70,11 +66,11 @@ public class Child {
         this.age = age;
     }
 
-    public Set<Section> getSections() {
-        return this.sections;
+    public List<Section> getSections() {
+        return sections;
     }
 
-    public void setSections(Set<Section> sections) {
+    public void setSections(List<Section> sections) {
         this.sections = sections;
     }
 
