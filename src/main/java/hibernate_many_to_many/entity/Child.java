@@ -17,16 +17,11 @@ public class Child {
     private int age;
 
     ////// Прописываем связь /////////////////////////
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH}) // чтобы небало каскадного удаления секции и каскадом детей или на оборот
     @JoinTable(name = "child_section",joinColumns = @JoinColumn(name = "child_id")//joinColumns прописываем с помощью какого столбца таблица child_section с таблицей child
     ,inverseJoinColumns = @JoinColumn(name = "section_id") ) // с помощью какого столбца child_section таблица будет связана с таблицей section
     private List<Section> sections = new ArrayList<>();
     ////// Прописываем связь /////////////////////////
-
-
-
-
-
 
     public Child() {
     }

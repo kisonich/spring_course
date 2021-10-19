@@ -21,10 +21,10 @@ public class Test1 {
         try {
 //            session = sessionFactory.getCurrentSession();
 //
-//            Section section1 = new Section ("Footballq");
-//            Child child1 = new Child("Aleshaq",5);
-//            Child child2 = new Child("Katyaq",4);
-//            Child child3 = new Child("Dashaq",6);
+//            Section section1 = new Section ("Dance");
+//            Child child1 = new Child("Antosha",5);
+//            Child child2 = new Child("Julyasha",4);
+//            Child child3 = new Child("Lenka",6);
 //
 //            section1.addChildToSection(child1);
 //            section1.addChildToSection(child3);
@@ -32,7 +32,7 @@ public class Test1 {
 //
 //            session.beginTransaction();
 //            //// Logging ///////
-//            session.save(section1); // child сохранятся вместе с section благодаря CascadeType.ALL
+//            session.persist(section1); // в cascadeType  проаисали Persist и чтобы сделать каскадное сохранение используем не save a persist
 //
 //            session.getTransaction().commit();
 //            System.out.println("Done!!!!!!!!!!!!!");
@@ -69,13 +69,17 @@ public class Test1 {
 //            session.getTransaction().commit();
 //            System.out.println("Done!!!!!!!!!!!!!");
             //*************************************/////////////////////////////////
+//
+//            session = sessionFactory.getCurrentSession();
+//            session.beginTransaction();
+//
+//            Section section = session.get(Section.class,5);
+//            System.out.println(section);
+//            System.out.println(section.getChildren());
+//            session.getTransaction().commit();
+//            System.out.println("Done!!!!!!!!!!!!!");
 
-            session = sessionFactory.getCurrentSession();
-            session.beginTransaction();
-
-            Child child = session.get(Child.class,5);
-            System.out.println(child);
-            System.out.println(child.getSections());
+            //*************************************/////////////////////////////////
 
 
 //            Section section = session.get(Section.class, 5);
@@ -86,29 +90,27 @@ public class Test1 {
 //            }
 
 
+
+//            session = sessionFactory.getCurrentSession();
+//            session.beginTransaction();
+//
+//            Section section = session.get(Section.class,7);
+//            session.delete(section);
+//            session.getTransaction().commit();
+/// дети не удалятся потому чо нет каскадной связи
+
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            Child child = session.get(Child.class,3);
+            session.delete(child);
             session.getTransaction().commit();
             System.out.println("Done!!!!!!!!!!!!!");
-
-
-
-
-
-
-
-
-
-
+///// удалили children  но осталась секция в которую он ходил
 
         }finally {
             session.close(); // Обязательно заакрываем сессию чтобы если выбросятся исключения до commit() то сеессия все равно закрылась
             sessionFactory.close();
-// урок 18!!!!!!!!!!!!!!!!!!
         }
-
-
-//        System.out.println("Test");
-
-
     }
 }
 // try block-нужен если выбросится exception то обязательно закрылся sessionFactory

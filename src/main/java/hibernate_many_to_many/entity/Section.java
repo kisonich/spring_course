@@ -15,17 +15,11 @@ public class Section {
     private String name;
 
     ////// Прописываем связь /////////////////////////
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH}) // чтобы небало каскадного удаления секции и каскадом детей или на оборот
     @JoinTable(name = "child_section",joinColumns = @JoinColumn(name = "section_id")//joinColumns прописываем с помощью какого столбца таблица child_section с таблицей child
             ,inverseJoinColumns = @JoinColumn(name = "child_id") ) // с помощью какого столбца child_section таблица будет связана с таблицей section
     List<Child> children = new ArrayList<>();
     ////// Прописываем связь /////////////////////////
-
-
-
-
-
-
 
     public Section() {
     }

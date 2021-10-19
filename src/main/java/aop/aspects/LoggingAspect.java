@@ -9,27 +9,21 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect // нужно через настройки внедрить фаил в проект (второй урок)
+@Aspect
 @Order(10) // При выполнении метода getBook() @Order позволит соблюдать порядок в Aspect таким образом будет поддерживаться рорядок в Advice которые содержаться в аспектах
 public class LoggingAspect { // При вызове метода getBook сначало происходит логирование информации а потом срабатывал метод
 
-
-
-
-
-
-//    //===/=/=/=/=/=/=//=/=//=//==/= комбенирование pointcut
+   //===/=/=/=/=/=/=//=/=//=//==/= комбенирование pointcut
 //    // pointcut подходит для всех мтодов кроме returnDVD
 //    @Pointcut("execution(* aop.UniLibrary.*(..))") // все методы
 //    public void allMethodFromUniLibrary(){}
-//
+
 //    @Pointcut("execution(* aop.UniLibrary.returnDVD(..))") //**
 //    private void returnDVDFromUniLibrary(){}
-//
-//
+
+
 //@Pointcut("allMethodFromUniLibrary() && !returnDVDFromUniLibrary()") // все кроме **
 //    private void allMethodExceptReturnDVDFromUniLibrary(){}
-//
 //    @Before("allMethodExceptReturnDVDFromUniLibrary()")
 //    public void beforeAllMethodExceptReturnDVDAdvice(){
 //        System.out.println("beforeAllMethodExceptReturnDVDAdvice : Log #10");
@@ -37,6 +31,7 @@ public class LoggingAspect { // При вызове метода getBook сна�
 //    //===/=/=/=/=/=/=//=/=//=//==/=
 
     //======================= Коибенирования pointcut
+
 //    @Pointcut("execution(* aop.UniLibrary.get*())") //*
 //    private void allGetMethodFromUniLibrary(){}
 //
@@ -44,8 +39,7 @@ public class LoggingAspect { // При вызове метода getBook сна�
 //    public void beforeGetLoggingAdvice() {
 //        System.out.println("beforeGetLoggingAdvice : writing Log #1");
 //    }
-//
-//
+
 //    @Pointcut("execution(* aop.UniLibrary.return*())") //**
 //    private void allReturnMethodFromUniLibrary(){}
 //
@@ -66,7 +60,7 @@ public class LoggingAspect { // При вызове метода getBook сна�
 //    }
 
 
-//============================ Разные примеры урок 6
+//============================ Разные примеры
 
 
     // Обьявление pointcut
@@ -89,16 +83,10 @@ public class LoggingAspect { // При вызове метода getBook сна�
         System.out.println("methodSignature = " + methodSignature);
         System.out.println("methodSignature.getName() = " + methodSignature.getName());
 
-
-
-
-
         System.out.println("beforeGetLoggingAdvice : Logging " + "tryings to get a book/ DVD ");
         System.out.println("========================================");
-
     }
     // Метод который вызывается до метода getBook.
-
 
 //    // Метод проверяет доступ пользователя к библиотетке
 //    @Before("allGetMethod()") // принели ссылку pointcut'а

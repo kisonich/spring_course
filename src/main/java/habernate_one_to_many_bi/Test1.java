@@ -40,8 +40,6 @@ public class Test1 {
 //            System.out.println("Добавление выполнилось!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 
-
-
             session = sessionFactory.getCurrentSession();// Создаем сессию(подключение к базе)
             session.beginTransaction(); // Открываем транзакцию .// обязательно
             System.out.println("Get department");
@@ -53,8 +51,6 @@ public class Test1 {
 
             session.getTransaction().commit(); // Закрыли транзакцию.// обязательно
             System.out.println("Добавление выполнилось!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-
 
 //            session = sessionFactory.getCurrentSession();// Создаем сессию(подключение к базе)
 //            session.beginTransaction(); // Открываем транзакцию .// обязательно

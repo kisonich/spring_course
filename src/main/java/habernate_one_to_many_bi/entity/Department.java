@@ -35,7 +35,7 @@ public class Department {
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;
     }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!// интересный метод урок14
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public   void addEmployeeToDepartment(Employee employee){
         if (emps == null){
             emps = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Department {
             emps.add(employee);
             employee.setDepartment(this); // для Bi direction связи
     }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////////////////////
+//!!!!!!!!!!!!!!!!!!!!!!!!!///////////////////////////////
     public int getId() {
         return id;
     }
